@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Recipe Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% comment %}
+    q=80&w=1887
+    {% endcomment %}
+    {% load static %}
+    <!-- Custom styles -->
+    <style>
+        body {
+            overflow: hidden; /* Hide scroll bars for the video */
+            padding-top: 56px; /* Add space at the top for fixed navbar */
+            margin: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif; /* Add your preferred font-family */
+        }
+
+        .background-image {
+            background-image: url("https://images.unsplash.com/photo-1496412705862-e0088f16f791?q=80&w=1887&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fEZvb2R8ZW58MHwwfDB8fHww"); /* Replace 'your-background-image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place the image behind other elements */
+        }
+
+        .navbar {
+            background-color: #223140; /* Midnight blue navbar background color */
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: 60px;
+            z-index: 1; /* Ensure the navbar is above the image */
+        }
+
+        .navbar-brand {
+            color: #ffffff !important; /* Navbar brand text color */
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* Navbar links text color */
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8); /* Light gray container background with opacity */
+            padding: 50px;
+            border-radius: 20px; /* Rounded corners for the container */
+            box-shadow: 0 0 10px rgba(201, 182, 182, 0.1); /* Add a subtle box shadow */
+            text-align: center;
+            position: relative; /* Set position relative to contain z-index */
+            z-index: 2; /* Ensure the container is above the image */
+            border: 1px solid #ffffff;
+            margin-top: 200px;
+        }
+
+        h1 {
+            font-size: 60px;
+            font-stretch: expanded;
+            color: #3498db; /* Dodger blue heading text color */
+        }
+
+        .welcome-text {
+            color: #ffffff; /* White color for "Welcome to" text */
+        }
+
+        strong {
+            color: #ff01cc; /* Alizarin crimson color for the strong tag */
+            font-family: 'Arial', sans-serif;
+        }
+
+        p {
+            color: #fffafa; /* Dark gray color for paragraph text */
+            font-style: italic;
+            font-size: 24px;
+        }
+
+        .btn-action {
+            margin: 20px;
+            width: 200px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Styling for different buttons */
+        .btn-add { background-color: #3498db;  /* Dodger blue */ }
+        .btn-view { background-color: #2ecc71; /* Emerald green */ }
+        .btn-search { background-color: #f39c12; /* Sunflower yellow */ }
+        .btn-delete { background-color: #e74c3c; /* Alizarin crimson */ }
+        .btn-update { background-color: #1abc9c; /* Turquoise */ }
+
+        /* Styling for the Logout button */
+        .btn-logout {
+            background-color: #3f9aa0; /* Gray color for Logout button */
+            height: 50px;
+            width: 100px;
+        }
+
+        /* Styling for the username */
+        .username {
+            color: #ffffff; /* White color for username */
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background-image"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">FlavorFolio</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-action btn-logout" href="/login">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="username" style="font-family:cursive; font-size: 30px;">Hello, {{request.user.username}}</div>
+    <h1 class="text-success mb-4"><span class="welcome-text">Welcome to</span> <strong>FlavorFolio</strong></h1>
+    <p>All your favourite recipes at one place!</p>
+
+    <div>
+        <a href="/add-recipe" class="btn btn-action btn-add">Add Recipe</a>
+        <a href="/view-all" class="btn btn-action btn-view">View All</a>
+        <a href="/search" class="btn btn-action btn-search">Search</a>
+        <a href="/delete-select" class="btn btn-action btn-delete">Delete</a>
+        <a href="/update" class="btn btn-action btn-update">Update</a>
+    </div>
+</div>
+
+</body>
+</html>

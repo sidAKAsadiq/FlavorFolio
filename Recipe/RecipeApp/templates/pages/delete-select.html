@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Delete by Selecting</title>
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background: url("https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D") center/cover no-repeat fixed;
+            color: #ffffff; /* Adjust text color for better visibility on the image */
+            padding: 100px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 2px solid #e74c3c; /* Dark red border */
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #e74c3c; /* Dark red color for heading */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #000000;
+        }
+
+        th {
+            background-color: #3498db; /* Dodger blue heading color */
+            color: #000000;
+            font-weight: bold;
+        }
+
+        td {
+            font-weight: bold;
+        }
+
+        .btn-delete {
+            background-color: #3498db; /* Dodger blue button color */
+            color: #ffffff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-delete:hover {
+            background-color: #2980b9; /* Slightly darker blue on hover */
+        }
+
+        /* Adjusted background color for the navbar */
+        .navbar {
+            background-color: #343a40;
+            height: 60px;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand {
+            padding-bottom: 1rem;
+            color: #ff4081 !important;
+        }
+
+        .navbar-nav .nav-link {
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .logout-link a:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .navbar-nav .logout-link {
+            margin-left: auto;
+        }
+
+        .navbar-nav .logout-link a {
+            color: #ffffff !important;
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .logout-link a:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/" style="color: #e200a2;"><strong>FlavorFolio</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add-recipe">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/update">Update</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view-all">View</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav logout-link">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-danger mb-4"><strong>Delete Recipes</strong></h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th><strong>ID</strong></th>
+            <th><strong>Recipe Name</strong></th>
+            <th><strong>Action</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in recipe_set %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ x.name }}</td>
+            <td><a href="/delete-id/{{ x.id }}/" class="btn btn-delete">Delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{page_name}}</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1578759525557-4166c9de137b?q=80&w=1887&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGZyZXNofGVufDB8fDB8fHww');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .navbar {
+            background-color: #343a40; /* Dark gray navbar background */
+            height: 60px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text color */
+        }
+
+        .navbar-brand {
+            padding-bottom: 1rem; /* Add or adjust padding-bottom */
+            color: #ff4081 !important; /* Pinkish navbar brand color */
+        }
+
+        .navbar-toggler {
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-link {
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .navbar-nav .logout-link {
+            margin-left: auto;
+        }
+
+        .navbar-nav .logout-link a {
+            color: #ffffff !important;
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .logout-link a:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white container background */
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px; /* Adjust the width as needed */
+            text-align: center;
+            margin-top: 80px; /* Adjusted margin-top to accommodate the navbar */
+        }
+
+        h1 {
+            color: #28a745; /* Green heading color */
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #ff4081  !important; /* Blue button background */
+            border: none;
+        }
+
+        button:hover {
+            background-color: #ff4081 !important; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><strong>FlavorFolio</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/view-all">View</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/delete-select">Delete</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update">Update</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav logout-link">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-success mb-4">Add Recipe</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="recipeName" class="form-label">Name</label>
+                <input name="recipe_name" type="text" class="form-control" placeholder="Enter recipe name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="recipeDescription" class="form-label">Description</label>
+                <textarea name="recipe_description" class="form-control" placeholder="Enter recipe description" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="recipeImage" class="form-label">Image</label>
+                <input name="recipe_image" type="file" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+
+</body>
+</html>

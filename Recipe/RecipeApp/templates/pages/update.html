@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">    
+    <title>Update Recipe</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Adding some basic styles for better presentation -->
+    <style>
+        body {
+            background-color: #1d4c76; /* Light gray background */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #f0e5e5; /* White background for the container */
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            display: inline-block;
+        }
+
+        h1 {
+            color: #000000; /* Blue heading color */
+            margin-bottom: 20px;
+            font-size: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #000000;
+            text-align: left;
+        }
+
+        th {
+            background-color: #387b82;
+            color: #1b1212;
+        }
+
+        .update-btn {
+            background-color: #02e6ff; /* Green button color */
+            color: #000000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor:crosshair;
+            text-decoration: none; /* Remove default underline for anchor tags */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .navbar {
+            background-color: #343a40; /* Dark gray navbar background */
+            height: 60px;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text color */
+        }
+
+        .navbar-brand {
+        padding-bottom: 1rem;
+        color: #ff4081 !important; /* Change the color */
+        background-color: #3d3d3d; /* Change the background color */
+    }
+
+        .navbar-nav .nav-link {
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .navbar-nav .logout-link {
+            margin-left: auto;
+        }
+
+        .navbar-nav .logout-link a {
+            color: #ffffff !important;
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .logout-link a:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        th {
+        background-color: #387b82;
+        color: #fff;
+    }
+
+    td:last-child {
+        /* Adjust the width of the last column */
+        width: 100px; /* You can set a specific width or use a more flexible approach */
+    }
+
+    .update-btn {
+        background-color: #02e6ff;
+        color: #000000;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+
+    </style>
+</head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/" style="color: #e200a2;"><strong>FlavorFolio</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add-recipe">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/delete-select">Delete</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/view-all">View</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav logout-link">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+    <h2 style="color: #000000;"><strong>Update Recipe</strong></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in recipe_set %}
+                    <tr>
+                        <td>{{ x.name }}</td>
+                        <td>{{ x.description }}</td>
+                        <td><img src="/media/{{ x.image }}" alt="{{ x.name }}" style="max-width: 100px;"></td>
+                        <td><a href="/update-id/{{ x.id }}/" class="update-btn">Update</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

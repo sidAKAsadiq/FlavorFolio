@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{page_name}}</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-image: url("https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1887&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVjaXBlfGVufDB8fDB8fHww"); /* Replace 'your-background-image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-top: 56px; /* Adjusted top padding for fixed navbar */
+            color: #495057; /* Updated text color */
+            margin: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif; /* Add your preferred font-family */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Updated container background color with opacity */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 150px;
+            max-width: 60%;
+        }
+
+        h1.recipe-heading {
+            color: #007bff; /* Updated heading color */
+            margin-bottom: 20px;
+        }
+
+        .recipe-card {
+            background-color: #ffffff; /* Updated card background color */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                
+        }
+
+        h2 {
+            color: #212529; /* Updated heading color */
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 10px 0; /* Adjusted paragraph margin */
+        }
+
+        img {
+            max-width: 25%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            height: 60px;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-brand {
+            padding-bottom: 1rem;
+            color: #ff4081 !important;
+        }
+
+        .navbar-nav .nav-link {
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .navbar-nav .logout-link {
+            margin-left: auto;
+        }
+
+        .navbar-nav .logout-link a {
+            color: #ffffff !important;
+            text-decoration: none;
+            padding-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .navbar-nav .logout-link a:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+
+    </style>
+</head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/" style="color: #e200a2;"><strong>FlavorFolio</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add-recipe">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/delete-select">Delete</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/update">Update</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav logout-link">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="recipe-heading mb-4">All Recipes</h1>
+    {% for x in recipe_set %}
+        <div class="recipe-card">
+            <h2>{{forloop.counter}} - {{ x.name }}</h2>
+            <p><strong>Description:</strong> {{ x.description }}</p>
+            <img src="/media/{{ x.image }}" alt="{{ x.name }}">
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
