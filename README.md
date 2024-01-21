@@ -5,10 +5,10 @@ FlavorFolio is a full-stack web application that empowers you to manage your rec
 ## Features
 
 ### Recipe Management
-Easily add, view, update, search, and delete your recipes with a user-friendly interface.
+- Easily add, view, update, search, and delete your recipes with a user-friendly interface.
 
 ### Authentication System
-Secure your data with a personalized touch. FlavorFolio includes a reliable authentication system, offering both login and registration features for users.
+- Secure your data with a personalized touch. FlavorFolio includes a reliable authentication system, offering both login and registration features for users.
 
 ## Tech Stack
 
